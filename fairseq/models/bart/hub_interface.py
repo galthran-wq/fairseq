@@ -53,8 +53,8 @@ class BARTHubInterface(GeneratorHubInterface):
             [0, 8331, 2]
         """
         tokens = self.bpe.encode(sentence)
-        if len(tokens.split(" ")) > min(self.max_positions) - 2:
-            tokens = " ".join(tokens.split(" ")[: min(self.max_positions) - 2])
+        if len(tokens.split(" ")) > min(self.max_positions) - 100 - 2:
+            tokens = " ".join(tokens.split(" ")[: min(self.max_positions) - 100 - 2])
         bpe_sentence = "<s> " + tokens + " </s>"
         for s in addl_sentences:
             bpe_sentence += " </s>" if not no_separator else ""
