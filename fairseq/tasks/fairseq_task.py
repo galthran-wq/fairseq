@@ -555,7 +555,7 @@ class FairseqTask(object):
     ):
         with torch.no_grad():
             return generator.generate(
-                models, sample, prefix_tokens=prefix_tokens, constraints=constraints
+                models, sample, prefix_tokens=None, constraints=constraints
             )
 
     def begin_epoch(self, epoch, model):
