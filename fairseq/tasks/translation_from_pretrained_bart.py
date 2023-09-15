@@ -82,11 +82,12 @@ class TranslationFromPretrainedBARTTask(TranslationTask):
             upsample_primary=self.args.upsample_primary,
             left_pad_source=self.args.left_pad_source,
             left_pad_target=self.args.left_pad_target,
-            max_source_positions=getattr(self.args, "max_source_positions", 1024),
+            max_source_positions=getattr(self.args, "max_source_positions", 1024) - 1,
             max_target_positions=getattr(self.args, "max_target_positions", 1024),
             load_alignments=self.args.load_alignments,
             prepend_bos=getattr(self.args, "prepend_bos", False),
             append_source_id=True,
+            truncate_source=self.args.truncate_source,
         )
 
     def build_generator(self, models, args, **unused):
